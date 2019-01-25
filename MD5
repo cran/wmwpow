@@ -1,8 +1,8 @@
-b6cb186b2d98eb7476d6dad29c296f32 *DESCRIPTION
+4fd57f6037eeb1b1ed86c993f382b9f4 *DESCRIPTION
 23b285a4fd06e85ad85e93c8f0b1553d *NAMESPACE
-00bd2dfb176f114b71f2e83e9ab59d95 *R/shiehpow.R
-e465a32af9499f658a797756784cc3ff *R/wmwpowd.R
-83328cf50f31a50d5559947afb427f2e *R/wmwpowp.R
-f80bcef2c9dc8a4be4ca0296d32eb366 *man/shiehpow.Rd
-400de3877e4cac3a2c79763449f2fa5b *man/wmwpowd.Rd
-ec34d1daa65d7e49048459465ceb1399 *man/wmwpowp.Rd
+706c12177ba315312a28c9a3d4634db6 *R/shiehpow.R
+25407eb4e5b1db06adb2ae9d39ba8d18 *R/wmwpowd.R
+ceff6d0539d551ee3c261127c4555016 *R/wmwpowp.R
+38ecd61a4fa1fad192c45f705fc47bf8 *man/shiehpow.Rd
+c26d0f46cbf60032e0a98b3184146ed1 *man/wmwpowd.Rd
+356c76c98ca001362e96ed033433ef56 *man/wmwpowp.Rd

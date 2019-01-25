@@ -1,4 +1,4 @@
-#' @title Calculating Power with Shieh's Method
+#' @title Power Calculation Using the Shieh et. al. Approach
 #' @name shiehpow
 #' @import lamW
 #' @description The purpose of \emph{shiehpow} is to perform a power analysis for a one
@@ -13,22 +13,28 @@
 #' @param alpha Type I error rate (numeric)
 #' @param dist The distribution type for the two groups (“exp”, “dexp”, or “norm”) (string)
 #' @param sides Options are “two.sided” and “one.sided” (string)
-#' @note When calculating power, \emph{shiehpow} uses a normal distribution assumption for one step in 
-#' the calculation, therefore results may vary in the thousandths place from one run to the next.
+#' @note When calculating power for dist=”norm”, \emph{shiehpow} uses 100,000 draws from a Z ~ N(0,1)
+#' distribution for the internal calculation of p2 and p3 from Shieh et al. (2006); thus 
+#' \emph{shiehpow} normal distribution power results may vary in the thousandths place from one run 
+#' to the next.
+#'
+#' @references 
+#' Shieh, G., Jan, S. L., Randles, R. H. (2006). On power and sample size
+#' determinations for the Wilcoxon–Mann–Whitney test. Journal of Nonparametric
+#' Statistics, 18(1), 33-43.
+#' 
+#' Mollan K.R., Trumble I.M., Reifeis S.A., Ferrer O., Bay C.P., Baldoni P.L.,
+#' Hudgens M.G. Exact Power of the Rank-Sum Test for a Continuous Variable, 
+#' arXiv:1901.04597 [stat.ME], Jan. 2019.
 #'
 #' @examples 
-#' # We want to determine the statistical power to compare the distance between mutations on a DNA 
+#' # We want to calculate the statistical power to compare the distance between mutations on a DNA 
 #' # strand in two groups of people. Each group (X and Y) has 10 individuals. We assume that the 
 #' # distance between mutations in the first group is exponentially distributed with rate 3. We assume 
 #' # that the probability that the distance in the first group is less than the distance in the second 
 #' # group (i.e., P(X<Y)) is 0.8. The desired type I error is 0.05.
 #'
 #' shiehpow(n = 10, m = 10, p = 0.80, alpha = 0.05, dist = "exp", sides = "two.sided")
-#'
-#' @references 
-#' Shieh G, Jan S, & Randles RH (2007). On power and sample size
-#' determinations for the Wilcoxon–Mann–Whitney test. Journal of Nonparametric
-#' Statistics, 18 (33-43).
 #'
 #' @export
 
@@ -164,7 +170,7 @@ shiehpow <- function(n, m, p, alpha=.05, dist, sides="two.sided")
       "alpha: ", alpha, "\n\n",
       "Shieh Power: ", round(power,3),sep = "")
 
-  output_list <- list(distribution = dist, sample_size_1 = n, sample_size_2 = m, p = p, wmw_odds = wmw_odds,
+  output_list <- list(distribution = dist,n = n, m = m, p = p, wmw_odds = wmw_odds,
                       alpha = alpha, test_sides = test_sides, power = round(power,3))
 }
 

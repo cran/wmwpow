@@ -1,11 +1,11 @@
-#' @title Power Calculation with wmwpowd
+#' @title Exact Monte Carlo Power Calculation by Inputting Distributions F and G (wmwpowd)
 #' @name wmwpowd
 #' @description \emph{wmwpowd} has two purposes:
 #'
-#' 1. Determine the power for a one-sided or two-sided Wilcoxon-Mann-Whitney test
+#' 1. Calculate the power for a one-sided or two-sided Wilcoxon-Mann-Whitney test
 #' with an exact p-value given two user specified distributions.
 #'
-#' 2. Determine p, the P(X<Y), where X represents random draws from one continuous
+#' 2. Calculate p, the P(X<Y), where X represents random draws from one continuous
 #' probability distribution and Y represents random draws from another distribution;
 #' p is useful for quantifying the effect size that the Wilcoxon-Mann-Whitney test is
 #' assessing.
@@ -24,21 +24,28 @@
 #' ("norm", "beta", "cauchy", "f", "gamma", "lnorm", "unif", "weibull","exp", "chisq", "t", "doublex")
 #' @param sides Options are “two.sided”, “less”, or “greater”. “less” means the
 #' alternative hypothesis is that distn is less than distm (string)
-#' @param nsims Number of simulated datasets for determining power; 10,000 is the default (numeric)
+#' @param nsims Number of simulated datasets for calculating power; 10,000 is the default.
+#' For exact power to the hundredths place (e.g., 0.90 or 90\%) around 100,000 simulated
+#' datasets is recommended (numeric)
 #' @note Example of distn, distm: “norm(1,2)” or “exp(1)”
 #'
 #' In addition to all continuous distributions supported in Base R, \emph{wmwpowd} also supports the 
 #' double exponential distribution from the smoothmest package
 #'
-#' The output WMWOdds is p expressed as odds (p/(1-p))
+#' The output WMWOdds is p expressed as odds p/(1-p)
 #'
 #' Use $ notation to select specific output parameters
 #'
 #' The function has been optimized to run through simulations quickly; long wait times are unlikely 
 #' for n and m of 50 or fewer
-
+#' 
+#' @references 
+#' Mollan K.R., Trumble I.M., Reifeis S.A., Ferrer O., Bay C.P., Baldoni P.L.,
+#' Hudgens M.G. Exact Power of the Rank-Sum Test for a Continuous Variable, 
+#' arXiv:1901.04597 [stat.ME], Jan. 2019.
+#' 
 #' @examples
-#' # 1. We want to determine the statistical power to compare body length measured on two groups of
+#' # 1. We want to calculate the statistical power to compare body length measured on two groups of
 #' # rabbits. Each group (X and Y) has 7 rabbits. We assume that body length will be normally 
 #' # distributed and have a constant standard deviation of 2 cm among groups. We assume that Group X 
 #' # will have a mean of 35 cm and Group Y will have a mean of 32 cm; the desired type I error is 0.05.
@@ -49,7 +56,7 @@
 #' \dontshow{wmwpowd(n = 5, m = 5, distn = "norm(35,2)", distm = "norm(32,2)", sides = "two.sided", 
 #'         alpha = 0.05, nsims=100)}
 #'
-#' # 2. We are interested in determining the statistical power (with type I error = 0.05) for a
+#' # 2. We are interested in calculating the statistical power (with type I error = 0.05) for a
 #' # comparison of the use of ornamentation among fiddle players living in two regions of the United 
 #' # States: X county, Texas and Y county, North Carolina. A random sample of 18 fiddlers will be 
 #' # collected within each state. The fiddlers will practice and perform a standardized version of the 
@@ -72,8 +79,8 @@
 ###########################################################################################################################
 #Name: wmwpowd.R
 #Programmer: Camden Bay
-#Purpose: A flexible function to perform a power analysis for an exact WMW test through simulation AND output p''
-#Notes: p'' is determined empirically. smoothmest must be installed.
+#Purpose: A flexible function to perform a power analysis for an exact Monte-Carlo WMW test through simulation AND output p''
+#Notes: p'' is calculated empirically. smoothmest must be installed.
 #Date Completed: 11/22/2017
 ###########################################################################################################################
 
@@ -139,6 +146,7 @@ wmwpowd <- function(n,m,distn,distm,sides="two.sided",alpha = 0.05,nsims=10000)
       "Supplied distribution 2: ", dist2, "; m = ", n2, "\n\n",
       "p: ", p, "\n",
       "WMW odds: ", wmw_odds, "\n",
+      "Number of simulated datasets: ", nsims, "\n",
       test_sides, " exact WMW test (alpha = ", alpha, ")\n\n",
       "Empirical power: ", empirical_power,sep = "")
 

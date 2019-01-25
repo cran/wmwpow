@@ -2,7 +2,7 @@
 % Please edit documentation in R/wmwpowp.R
 \name{wmwpowp}
 \alias{wmwpowp}
-\title{Power Calculation with wmwpowp}
+\title{Exact Monte Carlo Power Calculation by Inputting P (wmwpowp)}
 \usage{
 wmwpowp(n, m, distn, k = 1, p = NA, wmwodds = NA, sides, alpha = 0.05, nsims = 10000)
 }
@@ -25,23 +25,26 @@ be set (i.e., "norm" defaults to "norm(0,1)"), or user may specify both distribu
 \item{sides}{Options are “two.sided”, “less”, or “greater”. “less” means the alternative
 hypothesis is that distn is less than distm (string)}
 
-\item{k}{Standard deviation (SD) scalar for use with the normal or double exponential distribution 
-options; the SD for distm is computed as k times the SD provided in distn. SD2=k*SD1 (numeric)
-Default is k=1 (equal SDs in groups X and Y) (numeric)}
+\item{k}{Standard deviation (SD) scalar for use with the normal or double 
+exponential distribution options. The SD for distm is computed as k multiplied by
+ the SD for distn. Equivalently, k is the ratio of the SDs of the second and first 
+ distribution (k = SDm/SDn). Default is k=1 (equal SDs) (numeric)}
 
 \item{wmwodds}{The effect size expressed as odds = p/(1-p). Either p or wmwodds must be
 input (numeric)}
 
-\item{nsims}{Number of simulated datasets for determining power; 10,000 is the default (numeric)}
+\item{nsims}{Number of simulated datasets for calculating power; 10,000 is the default.
+For exact power to the hundredths place (e.g., 0.90 or 90\%) around 100,000 simulated
+datasets is recommended (numeric)}
 }
 \description{
 \emph{wmwpowp} has two purposes:
 
 1. Calculate the power for a
-one-sided or two-sided Wilcoxon-Mann-Whitney test with an exact p-value given
+one-sided or two-sided Wilcoxon-Mann-Whitney test with an exact Monte Carlo p-value given
 one user specified distribution and p (defined as P(X<Y)).
 
-2. Determine the parameters of the second
+2. Calculate the parameters of the second
 distribution. It is assumed that the second population is from the same type of
 continuous probability distribution as the first population.
 
@@ -49,12 +52,17 @@ Power is calculated empirically using simulated data and the parameters are calc
 mathematical formulas for P(X<Y).
 }
 \examples{
-# We want to determine the statistical power to compare the distance between mutations on a DNA 
+# We want to calculate the statistical power to compare the distance between mutations on a DNA 
 # strand in two groups of people. Each group (X and Y) has 10 individuals. We assume that the 
 # distance between mutations in the first group is exponentially distributed with rate 3. We assume
 # that the probability that the distance in the first group is less than the distance in the second 
 # group (i.e., P(X<Y)) is 0.8. The desired type I error is 0.05.
 
-wmwpowp(n = 10, m = 10, distn = "exp(3)", p = 0.8, k = 1, sides = "two.sided", alpha = 0.05)
+wmwpowp(n = 10, m = 10, distn = "exp(3)", p = 0.8, sides = "two.sided", alpha = 0.05)
 
+}
+\references{
+Mollan K.R., Trumble I.M., Reifeis S.A., Ferrer O., Bay C.P., Baldoni P.L.,
+Hudgens M.G. Exact Power of the Rank-Sum Test for a Continuous Variable, 
+arXiv:1901.04597 [stat.ME], Jan. 2019.
 }
