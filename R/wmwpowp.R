@@ -1,10 +1,10 @@
-#' @title Exact Monte Carlo Power Calculation by Inputting P (wmwpowp)
+#' @title Precise and Accurate Monte Carlo Power Calculation by Inputting P (wmwpowp)
 #' @name wmwpowp
 #' @import smoothmest
 #' @description \emph{wmwpowp} has two purposes:
 #'
 #' 1. Calculate the power for a
-#' one-sided or two-sided Wilcoxon-Mann-Whitney test with an exact Monte Carlo p-value given
+#' one-sided or two-sided Wilcoxon-Mann-Whitney test with an empirical Monte Carlo p-value given
 #' one user specified distribution and p (defined as P(X<Y)).
 #'
 #' 2. Calculate the parameters of the second
@@ -58,7 +58,7 @@
 ###########################################################################################################################
 #Name: wmwpowp.R
 #Programmer: Ilana Trumble
-#Purpose: Write a flexible function to perform a power analysis for an exact Monte Carlo WMW test,
+#Purpose: Write a flexible function to perform a power analysis for a precise and accurate Monte Carlo WMW test,
 # given p'' and one distribution, through simulation. Also return shifted distribution
 #Notes: p''=P(X<Y) given by the user; Works with continuous pdfs: norm, exp, double exponential
 #Date Completed: 22NOV2017
@@ -258,7 +258,7 @@ wmwpowp<- function(n,m,distn,k=1,p=NA,wmwodds=NA,sides="two.sided",alpha=0.05,ns
       "p: ", round(p,3), "\n",
       "WMW odds: ", round(wmwodds,3), "\n",
       "Number of simulated datasets: ", nsims, "\n",
-      test_sides, " exact WMW test (alpha = ", alpha, ")\n\n",
+      test_sides, " WMW test (alpha = ", alpha, ")\n\n",
       "Empirical power: ", empirical_power,sep = "")
 
   output_list <- list(empirical_power = empirical_power, alpha = alpha, test_sides = test_sides, p = p,

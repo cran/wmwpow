@@ -2,7 +2,7 @@
 % Please edit documentation in R/wmwpowd.R
 \name{wmwpowd}
 \alias{wmwpowd}
-\title{Exact Monte Carlo Power Calculation by Inputting Distributions F and G (wmwpowd)}
+\title{Precise and Accurate Monte Carlo Power Calculation by Inputting Distributions F and G (wmwpowd)}
 \usage{
 wmwpowd(n, m, distn, distm, sides, alpha = 0.05, nsims = 10000)
 }
@@ -30,7 +30,7 @@ datasets is recommended (numeric)}
 \emph{wmwpowd} has two purposes:
 
 1. Calculate the power for a one-sided or two-sided Wilcoxon-Mann-Whitney test
-with an exact p-value given two user specified distributions.
+with an empirical p-value given two user specified distributions.
 
 2. Calculate p, the P(X<Y), where X represents random draws from one continuous
 probability distribution and Y represents random draws from another distribution;

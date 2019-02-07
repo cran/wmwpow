@@ -1,8 +1,8 @@
 Package: wmwpow
 Type: Package
-Title: Exact Power of the Wilcoxon-Mann-Whitney Rank-Sum Test for a
-        Continuous Variable
-Version: 0.1.1
+Title: Precise and Accurate Power of the Wilcoxon-Mann-Whitney Rank-Sum
+        Test for a Continuous Variable
+Version: 0.1.2
 Date: 2019-01-07
 Author: Ilana Trumble, Orlando Ferrer, Camden Bay, Katie Mollan
 Maintainer: Ilana Trumble <ilana.trumble@ucdenver.edu>
@@ -14,6 +14,6 @@ Imports: lamW, smoothmest, MASS
 Depends: R (>= 3.0.2)
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-01-23 23:12:08 UTC; ilanatrumble
+Packaged: 2019-02-07 18:49:21 UTC; ilanatrumble
 Repository: CRAN
-Date/Publication: 2019-01-25 23:00:04 UTC
+Date/Publication: 2019-02-07 19:10:03 UTC

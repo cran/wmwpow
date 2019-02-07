@@ -2,7 +2,7 @@
 % Please edit documentation in R/wmwpowp.R
 \name{wmwpowp}
 \alias{wmwpowp}
-\title{Exact Monte Carlo Power Calculation by Inputting P (wmwpowp)}
+\title{Precise and Accurate Monte Carlo Power Calculation by Inputting P (wmwpowp)}
 \usage{
 wmwpowp(n, m, distn, k = 1, p = NA, wmwodds = NA, sides, alpha = 0.05, nsims = 10000)
 }
@@ -41,7 +41,7 @@ datasets is recommended (numeric)}
 \emph{wmwpowp} has two purposes:
 
 1. Calculate the power for a
-one-sided or two-sided Wilcoxon-Mann-Whitney test with an exact Monte Carlo p-value given
+one-sided or two-sided Wilcoxon-Mann-Whitney test with an empirical Monte Carlo p-value given
 one user specified distribution and p (defined as P(X<Y)).
 
 2. Calculate the parameters of the second
