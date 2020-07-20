@@ -1,0 +1,20 @@
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Article",
+        doi = "10.1080/10543406.2020.1730866",
+         title = "Precise and accurate power of the rank-sum test for a continuous outcome",
+         journal = "Journal of Biopharmaceutical Statistics",
+         author = c(person( "Katie","Mollan"),
+                    person( "Ilana","Trumble"),
+                    person( "Sarah","Reifeis"),
+                    person( "Orlanda","Ferrer"),
+                    person("Camden","Bay"),
+                    person("Pedro","Baldoni"),
+                    person("Michael","Hudgens")),
+         year = 2020,
+         note = note,
+         volume = 30,
+         number = 4,
+         pages = "639-648",
+         publisher = "Taylor & Francis",
+         url = "https://doi.org/10.1080/10543406.2020.1730866")

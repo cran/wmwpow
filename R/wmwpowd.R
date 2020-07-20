@@ -50,11 +50,11 @@
 #' # distributed and have a constant standard deviation of 2 cm among groups. We assume that Group X 
 #' # will have a mean of 35 cm and Group Y will have a mean of 32 cm; the desired type I error is 0.05.
 #'
-#' \donttest{wmwpowd(n = 7, m = 7, distn = "norm(35,2)", distm = "norm(32,2)", sides = "two.sided", 
-#'         alpha = 0.05, nsims=10000)}
+#' # For real world applications, we recommend increasing nsims to 10000
+#' wmwpowd(n = 7, m = 7, distn = "norm(35,2)", distm = "norm(32,2)", sides = "two.sided", 
+#'         alpha = 0.05, nsims=2000)}
 #'         
-#' \dontshow{wmwpowd(n = 5, m = 5, distn = "norm(35,2)", distm = "norm(32,2)", sides = "two.sided", 
-#'         alpha = 0.05, nsims=100)}
+#' 
 #'
 #' # 2. We are interested in calculating the statistical power (with type I error = 0.05) for a
 #' # comparison of the use of ornamentation among fiddle players living in two regions of the United 
@@ -66,11 +66,10 @@
 #' # the distribution will be shifted to a lower mean of 0.25 and have the shape alpha = 2, 
 #' # beta = 6 for the North Carolina fiddlers.
 #'
-#' \donttest{wmwpowd(n=18, m=18, distn = "beta(8,12)", distm = "beta(2,6)", sides = "two.sided", 
-#'         alpha = 0.05, nsims=10000)}
+#' # For real world applications, we recommend increasing nsims to 10000
+#' wmwpowd(n=18, m=18, distn = "beta(8,12)", distm = "beta(2,6)", sides = "two.sided", 
+#'         alpha = 0.05, nsims=2000)
 #'         
-#' \dontshow{wmwpowd(n=5, m=5, distn = "beta(8,12)", distm = "beta(2,6)", sides = "two.sided", 
-#'         alpha = 0.05, nsims=100)}
 #' @export
 #'
 #'
